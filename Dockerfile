@@ -8,6 +8,7 @@ COPY src src
 COPY ./certs/* .
  
 RUN dos2unix mvnw
+CMD ["chmod", "+x", "./mvnw"]
 RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
  
