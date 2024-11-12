@@ -77,9 +77,29 @@ public class LdapClient implements ILdapClient {
 	public LdapClient(CipherAESCommon cipherAESCommon) {
 		this.cipherAESCommon = cipherAESCommon;
 	}
+	
+	private void ObtenerValoresOpenShift() {
+		if(System.getenv("app.ldap.server") != null) {
+			ldapServer = System.getenv("app.ldap.server");
+		}
+		if(System.getenv("app.ldap.search.base") != null) {
+			ldapSearchBase = System.getenv("app.ldap.search.base");
+		}
+		if(System.getenv("app.ldap.username") != null) {
+			ldapUsername = System.getenv("app.ldap.username");
+		}
+		if(System.getenv("app.ldap.password") != null) {
+			ldapPassword = System.getenv("app.ldap.password");
+		}
+		if(System.getenv("app.ldap.dominio.mail") != null) {
+			ldapDominioMail = System.getenv("app.ldap.dominio.mail");
+		}
+	}
 
 	private InitialDirContext conexionLdap(boolean findUserPwd, SecurityAuthDTO securityAuthDTO)
 			throws NamingException {
+		/** Se realiza la asignacion de variables desde OpenShift */
+		ObtenerValoresOpenShift();
 		InitialDirContext ctx = null;
 		Hashtable<String, String> env = new Hashtable<>();
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");

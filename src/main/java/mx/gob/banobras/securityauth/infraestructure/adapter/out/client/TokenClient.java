@@ -72,7 +72,9 @@ public class TokenClient implements ITokenClient {
 		ErrorMessageDTO errorMessageDTO = null;
 		log.info("Inicia restCient Valida Token");
 		try {
-			
+			if(System.getenv("app.url.token.valid") != null) {
+				urlTokenValid = System.getenv("app.url.token.valid");
+			}
 			client = httpClientFactory.getHttpClient(urlTokenValid);
 			
 			HttpPost httpPost = new HttpPost(urlTokenValid);
