@@ -110,7 +110,7 @@ public class SecurityAuthCasoUsoServiceImpl implements ISecurityAuthCasoUsoServi
 			errorMessageDTO.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			errorMessageDTO.setTimestamp(new Date());
 			errorMessageDTO.setMessage(ex1.getMessage());
-			errorMessageDTO.setDetail("Valor de OpenShift: "+System.getenv("app.url.token.valid")+"/"+ErrorDetail.getDetail(ex1));
+			errorMessageDTO.setDetail(ErrorDetail.getDetail(ex1));
 			/** Respuiesta del servicio **/
 			ldapResponseDTO = new LdapResponseDTO();
 			ldapResponseDTO.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());

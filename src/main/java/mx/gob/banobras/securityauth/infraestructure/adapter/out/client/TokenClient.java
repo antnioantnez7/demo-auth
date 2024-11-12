@@ -132,7 +132,7 @@ public class TokenClient implements ITokenClient {
 			errorMessageDTO = new ErrorMessageDTO();
 			errorMessageDTO.setStatusCode(HttpStatus.SERVICE_UNAVAILABLE.value());
 			errorMessageDTO.setTimestamp(new Date());
-			errorMessageDTO.setMessage("Valor de OpenShift: "+System.getenv("app.url.token.valid")+"/"+ConstantsSecurityAuth.MSG_NO_SERVICE_TOKENIZER.getName());
+			errorMessageDTO.setMessage(ConstantsSecurityAuth.MSG_NO_SERVICE_TOKENIZER.getName());
 			errorMessageDTO.setDetail(ErrorDetail.getDetail(e));
 			/** Respuesta del servicio */
 			tokenizerResponseDTO = new TokenizerResponseDTO();
